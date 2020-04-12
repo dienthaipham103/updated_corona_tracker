@@ -1,10 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
-  option = 0;
+  opt = 0;
+
+  change = new Subject();
+
+  set option(value: number) {
+    this.opt = value;
+    this.change.next();
+  }
+
+  get option() {
+    return this.opt;
+  }
 
   dic = [{title: 'Theo dõi tình hình dịch bệnh Covid-19',
           description: 'Dịch bệnh bắt đầu ở Vũ Hán, tỉnh Hồ Bắc, Trung Quốc, vào tháng 12 năm 2019',
@@ -15,11 +27,13 @@ export class LanguageService {
           description: 'The outbreak started in Wuhan, Hubei province, China, in December 2019',
           case: 'Cases',
           death: 'Deaths',
-          recovered: 'Recovered'}]
+          recovered: 'Recovered'}];
 
-  constructor() { console.log(this.option)}
+  constructor() {
+    console.log(this.option);
+  };
 
-  show(content){
+  show(content) {
     return this.dic[this.option][content];
   }
 }

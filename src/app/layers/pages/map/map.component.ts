@@ -31,7 +31,8 @@ export class MapComponent implements OnInit {
   datas : Country[] = [];
 
   constructor(private markerService: MarkersService,
-              public languageService: LanguageService) { }
+              public languageService: LanguageService) {
+              }
 
   ngOnInit(): void {
     // get datas from server
@@ -44,7 +45,11 @@ export class MapComponent implements OnInit {
       this.initMap();
       // this.markerService.makeCapitalMarkers(this.map);
       this.markerService.makeCapitalCircleMarkers(this.map, this.datas, this.languageService.show('case'),
-       this.languageService.show('death'), this.languageService.show('recovered'));
+        this.languageService.show('death'), this.languageService.show('recovered'));
+    });
+
+    this.languageService.change.subscribe(() => {
+      console.log(123);
     })
   }
 
@@ -54,7 +59,7 @@ export class MapComponent implements OnInit {
       zoom: 2
     });
 
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    const tiles = L.tileLayer('htt ps://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       maxNativeZoom: 29,
       minZoom: 2,
