@@ -15,8 +15,7 @@ export class PopUpService {
 
   constructor(public languageService: LanguageService) {}
 
-  makeCapitalTooltip(name: string, cases: number, deaths: number, recovered: number,
-    str1: string, str2: string, str3: string): string {
+  makeCapitalTooltip(name: string, cases: number, deaths: number, recovered: number, text: string[]): string {
     cases = numberWithCommas(cases);
     deaths = numberWithCommas(deaths);
     recovered = numberWithCommas(recovered);
@@ -27,9 +26,9 @@ export class PopUpService {
     <p style="text-align: center;font-size:110%;font-weight:bold;">${name}</p>
     <hr>
     <ul>
-      <li style="color: gray;">${str1}: ${cases}</li>
-      <li style="color: red;">${str2}: ${deaths}</li>
-      <li style="color: green;">${str3}: ${recovered}</li>
+      <li style="color: gray;">${text[0]}: ${cases}</li>
+      <li style="color: red;">${text[1]}: ${deaths}</li>
+      <li style="color: green;">${text[2]}: ${recovered}</li>
     </ul>
     `
   }

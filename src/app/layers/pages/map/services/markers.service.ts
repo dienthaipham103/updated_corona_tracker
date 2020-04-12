@@ -37,7 +37,7 @@ export class MarkersService {
     }
   }
 
-  makeCapitalCircleMarkers(map: L.map, datas: Country[], str1: string, str2: string, str3: string): void {
+  makeCapitalCircleMarkers(map: L.map, datas: Country[], text: string[]): void {
     // Find the maximum values
     const nums = datas.map(i => i.cases);
     const maxVal = Math.max(...nums);
@@ -53,8 +53,7 @@ export class MarkersService {
           fillOpacity: 0.7,
           popup: "Transamerica Pyramid"
         });
-      circle.bindTooltip(this.popupService.makeCapitalTooltip(data.country, data.cases, data.deaths, data.recovered,
-                         str1, str2, str3));
+      circle.bindTooltip(this.popupService.makeCapitalTooltip(data.country, data.cases, data.deaths, data.recovered, text));
 
       circle.addTo(map);
     }

@@ -16,7 +16,15 @@ const routes: Routes = [
       component: MapComponent
     },
     {
+      path: 'en',
+      component: MapComponent
+    },
+    {
       path: 'charts',
+      component: ChartsComponent
+    },
+    {
+      path: 'charts/en',
       component: ChartsComponent
     },
     {
@@ -24,7 +32,15 @@ const routes: Routes = [
       component: StatisticComponent
     },
     {
+      path: 'statistic/en',
+      component: StatisticComponent
+    },
+    {
       path: 'detail/:country',
+      component: DetailComponent
+    },
+    {
+      path: 'detail/en/:country',
       component: DetailComponent
     }]
   }

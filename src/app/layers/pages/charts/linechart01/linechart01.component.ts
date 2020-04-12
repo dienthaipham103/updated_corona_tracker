@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { ChartsService } from 'src/app/services/charts.service';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-linechart01',
@@ -11,7 +12,8 @@ export class Linechart01Component implements OnInit {
   chart = [];
   data;
 
-  constructor(private chartsService: ChartsService) { }
+  constructor(private chartsService: ChartsService,
+              public languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.chartsService.getLineChart01_data().subscribe(data=>{
@@ -26,13 +28,13 @@ export class Linechart01Component implements OnInit {
             {
               data: this.data['recovered_rate'],
               borderColor: 'green',
-              label: "Recovered Rate",
+              label: this.languageService.show('recovered_rate'),
               fill: false
             },
             {
               data: this.data['death_rate'],
               borderColor: 'red',
-              label: "Death Rate",
+              label: this.languageService.show('death_rate'),
               fill: false
             }
           ]
@@ -75,7 +77,7 @@ export class Linechart01Component implements OnInit {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Rate (%)'
+                labelString: this.languageService.show('linechart01_ylabel')
               },
               ticks: {
                 beginAtZero:true,
@@ -91,7 +93,7 @@ export class Linechart01Component implements OnInit {
   
           title: {
             display: true,
-            text: 'Change of death rate and recovered rate'
+            text: this.languageService.show('linechart01_title')
           }
         }
   

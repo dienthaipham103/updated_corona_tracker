@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { ChartsService, Piechart_model } from 'src/app/services/charts.service';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-piechart',
@@ -11,7 +12,8 @@ export class PiechartComponent implements OnInit {
   chart = [];
   data: Piechart_model;
 
-  constructor(private chartsService: ChartsService) { }
+  constructor(private chartsService: ChartsService,
+              public languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.chartsService.getPieChart_data().subscribe(data=>{
@@ -35,7 +37,7 @@ export class PiechartComponent implements OnInit {
         options: {
           title: {
             display: true,
-            text: 'Countries cases distribution (%)'
+            text: this.languageService.show('piechart_title')
           },
           legend: {
             display: true,

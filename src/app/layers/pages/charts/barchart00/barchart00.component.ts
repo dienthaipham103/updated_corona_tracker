@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Barchart00_model, ChartsService } from 'src/app/services/charts.service';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-barchart00',
@@ -11,7 +12,8 @@ export class Barchart00Component implements OnInit {
   chart = [];
   data: Barchart00_model
 
-  constructor(private chartsService: ChartsService) { }
+  constructor(private chartsService: ChartsService, 
+              public languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.chartsService.getBarChart00_data().subscribe(data=>{
@@ -39,7 +41,7 @@ export class Barchart00Component implements OnInit {
         legend: { display: false },
         title: {
         display: true,
-        text: 'Countries with high number of cases'
+        text: this.languageService.show('barchart00_title')
         },
         scales: {
           yAxes: [{
@@ -49,7 +51,7 @@ export class Barchart00Component implements OnInit {
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Cases'
+              labelString: this.languageService.show('case')
             },
             
             ticks: {

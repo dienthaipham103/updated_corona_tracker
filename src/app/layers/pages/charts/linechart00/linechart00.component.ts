@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { ChartsService, Linechart00_model } from 'src/app/services/charts.service';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-linechart00',
@@ -11,7 +12,8 @@ export class Linechart00Component implements OnInit {
   chart = [];
   data;
 
-  constructor(private chartsService: ChartsService) { }
+  constructor(private chartsService: ChartsService,
+              public languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.chartsService.getLineChart00_data().subscribe(data=>{
@@ -26,19 +28,19 @@ export class Linechart00Component implements OnInit {
             {
               data: this.data['cases'],
               borderColor: 'gray',
-              label: "Cases",
+              label: this.languageService.show('case'),
               fill: false
             },
             {
               data: this.data['recovered'],
               borderColor: 'green',
-              label: "Recovered",
+              label: this.languageService.show('recovered'),
               fill: false
             },
             {
               data: this.data['deaths'],
               borderColor: 'red',
-              label: "Deaths",
+              label: this.languageService.show('death'),
               fill: false
             }
           ]
@@ -81,7 +83,7 @@ export class Linechart00Component implements OnInit {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Number'
+                labelString: this.languageService.show('linechart00_ylabel')
               },
               ticks: {
                 beginAtZero:true,
@@ -97,7 +99,7 @@ export class Linechart00Component implements OnInit {
   
           title: {
             display: true,
-            text: 'Cumulative number of cases, deaths and recovered in the world'
+            text: this.languageService.show('linechart00_title')
           }
         }
   

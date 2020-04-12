@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { ChartsService } from 'src/app/services/charts.service';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-barchart02',
@@ -11,7 +12,8 @@ export class Barchart02Component implements OnInit {
   chart = [];
   data;
 
-  constructor(private chartsService: ChartsService) { }
+  constructor(private chartsService: ChartsService,
+              public languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.chartsService.getBarChart02_data().subscribe(data=>{
@@ -36,14 +38,14 @@ export class Barchart02Component implements OnInit {
         legend: { display: false },
         title: {
         display: true,
-        text: 'Daily deaths'
+        text: this.languageService.show('barchart02_title')
         },
         scales: {
           yAxes: [{
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Deaths'
+              labelString: this.languageService.show('death')
             },
             ticks: {
               beginAtZero:true,

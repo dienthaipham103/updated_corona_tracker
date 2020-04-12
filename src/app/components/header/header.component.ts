@@ -25,4 +25,25 @@ export class HeaderComponent implements OnInit {
     }, 300);
   }
 
+  mapRouter(opt){
+    if(opt == 0){
+      return '/'
+    }
+    return '/en'
+  }
+
+  chartRouter(opt){
+    if(opt == 0){
+      return '/charts'
+    }
+    return '/charts/en'
+  }
+
+  statisticRouter(opt){
+    if(opt == 0){
+      return '/statistic'
+    }
+    return '/statistic/en'
+  }
+
 }

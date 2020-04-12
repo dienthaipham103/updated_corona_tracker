@@ -19,17 +19,17 @@
                 </li>
                 <li>
                     <button mat-icon-button>
-                        <mat-icon routerLink="/">explore</mat-icon>
+                        <mat-icon routerLink={{mapRouter(languageService.opt)}}>explore</mat-icon>
                     </button>
                 </li>
                 <li>
                     <button mat-icon-button>
-                        <mat-icon routerLink="/charts">timeline</mat-icon>
+                        <mat-icon routerLink={{chartRouter(languageService.opt)}}>timeline</mat-icon>
                     </button>
                 </li>
                 <li>
                     <button mat-icon-button>
-                        <mat-icon routerLink="/statistic">view_list</mat-icon>
+                        <mat-icon routerLink={{statisticRouter(languageService.opt)}}>view_list</mat-icon>
                     </button>
                 </li>
             </ul>
