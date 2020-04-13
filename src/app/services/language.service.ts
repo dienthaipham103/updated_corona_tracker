@@ -34,7 +34,8 @@ export class LanguageService {
           barchart00_title: '30 quốc gia có số lượng ca nhiễm nhiều nhất thế giới',
           barchart01_title: 'Số ca nhiễm mới mỗi ngày',
           barchart02_title: 'Số ca tử vong mỗi ngày',
-          barchart03_title: 'Số ca khỏi bệnh mỗi ngày'},
+          barchart03_title: 'Số ca khỏi bệnh mỗi ngày',
+          credit: 'Nguồn dữ liệu'},
 
           {title: 'Coronavirus Tracker',
           description: 'The outbreak started in Wuhan, Hubei province, China, in December 2019',
@@ -53,7 +54,8 @@ export class LanguageService {
           barchart00_title: '30 countries with high number of cases',
           barchart01_title: 'Daily new cases',
           barchart02_title: 'Daily deaths',
-          barchart03_title: 'Daily recovered'}];
+          barchart03_title: 'Daily recovered',
+          credit: 'Data Source'}];
 
   constructor() {
     console.log(this.opt);
